@@ -22,7 +22,7 @@ jobs:
 
       - name: run test and make report
         run: |
-          ./gradlew clean test allureReport allureServe
+          ./gradlew clean test allureReport
         shell: bash
 
 #      - name: Copy reporter-readme.txt to report directory
