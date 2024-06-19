@@ -1,1 +1,3 @@
-spring.application.name=kotest-allure-poc
+spring:
+  application:
+    name: kotest-allure-poc
