@@ -17,10 +17,12 @@ jobs:
           cache: 'gradle'
       - name: Grant execute permission for gradlew
         run: chmod +x ./gradlew
-      - name: test
+      - name: run test and make report
         run: |
-          ls
-          ./gradlew clean
-          ls
-          ./gradlew test
+          ./gradlew clean test allureReport
         shell: bash
+      - name: Upload test report
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-report-by-allure
+          path: build/reports/allure-report
