@@ -21,13 +21,13 @@ jobs:
         run: |
           ./gradlew clean test allureReport
         shell: bash
-      - name: Copy reporter-readme.txt to report directory
-        run: cp reporter-readme.txt build/reports/allure-report/allureReport
-      - name: Upload test report
-        uses: actions/upload-artifact@v4
-        with:
-          name: test-report-by-allure
-          path: build/reports/allure-report
+#      - name: Copy reporter-readme.txt to report directory
+#        run: cp reporter-readme.txt build/reports/allure-report/allureReport
+#      - name: Upload test report
+#        uses: actions/upload-artifact@v4
+#        with:
+#          name: test-report-by-allure
+#          path: build/reports/allure-report
       - name: Deploy report page
         uses: peaceiris/actions-gh-pages@v4
         with:
