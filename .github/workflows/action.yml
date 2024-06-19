@@ -9,27 +9,33 @@ jobs:
     steps:
       - name: Get code
         uses: actions/checkout@v4
+
       - name: Setup Java
         uses: actions/setup-java@v4
         with:
           java-version: '21'
           distribution: 'temurin'
           cache: 'gradle'
+
       - name: Grant execute permission for gradlew
         run: chmod +x ./gradlew
+
       - name: run test and make report
         run: |
-          ./gradlew clean test allureReport
+          ./gradlew clean test allureReport allureServe
         shell: bash
+
 #      - name: Copy reporter-readme.txt to report directory
 #        run: cp reporter-readme.txt build/reports/allure-report/allureReport
+
 #      - name: Upload test report
 #        uses: actions/upload-artifact@v4
 #        with:
 #          name: test-report-by-allure
 #          path: build/reports/allure-report
-      - name: Deploy report page
-        uses: peaceiris/actions-gh-pages@v4
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./build/reports/allure-report/allureReport
+
+#      - name: Deploy report page
+#        uses: peaceiris/actions-gh-pages@v4
+#        with:
+#          github_token: ${{ secrets.GITHUB_TOKEN }}
+#          publish_dir: ./build/reports/allure-report/allureReport
