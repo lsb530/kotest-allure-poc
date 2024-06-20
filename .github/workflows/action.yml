@@ -6,6 +6,8 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: Get code
         uses: actions/checkout@v4
@@ -34,8 +36,8 @@ jobs:
 #          name: test-report-by-allure
 #          path: build/reports/allure-report
 
-#      - name: Deploy report page
-#        uses: peaceiris/actions-gh-pages@v4
-#        with:
-#          github_token: ${{ secrets.GITHUB_TOKEN }}
-#          publish_dir: ./build/reports/allure-report/allureReport
+      - name: Deploy report page
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build/reports/allure-report/allureReport
